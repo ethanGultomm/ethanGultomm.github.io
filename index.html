@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ethan | Backend Engineer</title>
+<style>
+:root{
+  --bg:#000; --surface:#0a0a0a; --text:#fff; --muted:#a1a1a1; --line:#2a2a2a; --line-strong:#fff;
+  --nav-bg:rgba(0,0,0,.92);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:dark;
+}
+html{background:#000;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--nav-bg);backdrop-filter:blur(8px)}
+a{color:var(--text)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--nav-bg);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:56px}
+nav .brand{font-weight:700;text-decoration:none}
+nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0}
+nav ul a{color:var(--muted);text-decoration:none;font-size:.95rem}
+nav ul a:hover{color:var(--text)}
+.hero{padding:72px 0 48px}
+.eyebrow{color:var(--muted);font-weight:600;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px}
+h1{font-size:clamp(2rem,6vw,3.2rem);line-height:1.15;margin:0 0 16px;letter-spacing:-.02em}
+.lead{color:var(--muted);font-size:1.1rem;max-width:62ch;margin:0 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;font-weight:600;text-decoration:none;border:1px solid var(--text);color:var(--text);background:transparent}
+.btn:hover{background:#1a1a1a}
+.btn.primary{background:var(--text);color:#000}
+.btn.primary:hover{background:#d9d9d9}
+section{padding:48px 0;border-top:1px solid var(--line)}
+h2{font-size:1.5rem;margin:0 0 24px;letter-spacing:-.01em}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px}
+.card + .card{margin-top:24px}
+.card h3{margin:0 0 6px;font-size:1.3rem}
+.sub{color:var(--muted);margin:0 0 16px}
+.status{display:inline-block;font-size:.75rem;font-weight:700;padding:2px 10px;border-radius:999px;background:var(--text);color:#000;margin-left:8px;vertical-align:middle}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 24px}
+.tags li{font-size:.82rem;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.demo{margin:0 0 24px}
+.demo .ph{aspect-ratio:16/9;border:1px dashed #555;border-radius:10px;display:grid;place-items:center;text-align:center;padding:16px;color:var(--muted);font-size:.9rem}
+.demo .ph strong{display:block;color:var(--text);margin-bottom:4px}
+.demo img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px}
+.demo figcaption{color:var(--muted);font-size:.85rem;margin-top:6px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:24px}
+h4{margin:0 0 8px;font-size:.95rem}
+.card ul.list{margin:0 0 24px;padding-left:18px;color:var(--muted)}
+.cols ul{margin:0;padding-left:18px;color:var(--muted)}
+.card li{margin-bottom:6px}
+.scroll{overflow-x:auto}
+pre{margin:0 0 24px;padding:16px 18px;background:#000;color:#e8e8e8;border:1px solid var(--line);border-radius:10px;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;min-width:max-content}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin-bottom:24px;min-width:520px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:600}
+code{font:.9em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--text)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.skills div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.skills h3{margin:0 0 6px;font-size:.95rem}
+.skills p{margin:0;color:var(--muted);font-size:.95rem}
+footer{padding:32px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+.card .btns{margin:0}
+.card .tags{margin-bottom:20px}
+details.more{margin-top:20px;border-top:1px solid var(--line)}
+details.more summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;padding:14px 0 4px;font-weight:600}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::after{content:"+";font-size:1.5rem;line-height:1;color:var(--muted)}
+details.more[open] summary::after{content:"\2212"}
+details.more summary:hover::after{color:var(--text)}
+details.more .when-open{display:none}
+details.more[open] .when-closed{display:none}
+details.more[open] .when-open{display:inline}
+details.more .body{padding-top:16px}
+@media (max-width:640px){.cols{grid-template-columns:1fr}nav ul{gap:14px}.hero{padding-top:48px}.card{padding:20px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top">EthanGultom</a>
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <p class="eyebrow">Software engineer</p>
+    <h1>Ethan Rio Estefan Gultom</h1>
+    <p class="lead">I’m a software engineer with knowledge on backend development: REST APIs, relational databases, and authentication. I also build lower-level projects in C++, like a physics engine rendered with OpenGL. I’m looking for my next software engineer role.</p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">View my projects</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </div>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <article class="card">
+      <h3>Job Tracker API</h3>
+      <p class="sub">A REST API for tracking the jobs you’ve applied to, with user accounts, token-based authentication, and a PostgreSQL database.</p>
+      <ul class="tags">
+        <li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>Prisma</li><li>JWT</li><li>REST</li>
+      </ul>
+
+      <div class="btns">
+        <a class="btn primary" href="https://github.com/ethanGultomm/Job-Tracker" target="_blank" rel="noopener">View source on GitHub</a>
+      </div>
+
+      <details class="more">
+        <summary><span class="when-closed">Show details</span><span class="when-open">Hide details</span></summary>
+        <div class="body">
+
+      <div class="cols">
+        <div>
+          <h4>What it does</h4>
+          <ul>
+            <li>Register and log in with email and password</li>
+            <li>Add, list, update, and delete job applications</li>
+            <li>Find an application by ID or by position</li>
+            <li>Every application belongs to a user</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Design notes</h4>
+          <ul>
+            <li>Stateless auth: login returns a JWT that expires after 7 days, sent as a bearer token</li>
+            <li>Passwords are hashed before they’re stored</li>
+            <li>Prisma gives a typed data layer over PostgreSQL</li>
+            <li>Routes and middleware live in separate modules</li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>Example request</h4>
+      <div class="scroll"><pre>POST /applications
+Authorization: Bearer &lt;token&gt;
+Content-Type: application/json
+
+{
+  "company": "Amanda Corp",
+  "position": "Backend Engineer",
+  "status": "applied"
+}</pre></div>
+
+      <h4>Data model</h4>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Model</th><th>Fields</th></tr></thead>
+        <tbody>
+          <tr><td><code>User</code></td><td>userId, email, password (hashed), date added</td></tr>
+          <tr><td><code>Application</code></td><td>id, company, position, status, date added, userId</td></tr>
+        </tbody>
+      </table>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="card">
+      <h3>Physics Engine<span class="status">Work in progress</span></h3>
+      <p class="sub">A 2D physics simulation written in C++, rendered in real time with core-profile OpenGL.</p>
+      <ul class="tags">
+        <li>C++</li><li>OpenGL 3.3</li><li>GLFW</li><li>GLAD</li><li>GLM</li><li>CMake</li><li>Ninja</li><li>vcpkg</li>
+      </ul>
+
+      <div class="btns">
+        <a class="btn primary" href="https://github.com/ethanGultomm/Physics-Engine" target="_blank" rel="noopener">View source on GitHub</a>
+        <a class="btn" href="https://github.com/ethanGultomm/Physics-Engine/tree/master/src" target="_blank" rel="noopener">Browse /src</a>
+      </div>
+
+      <details class="more">
+        <summary><span class="when-closed">Show details</span><span class="when-open">Hide details</span></summary>
+        <div class="body">
+      <figure class="demo" data-src="images/physics-engine-demo.gif" data-alt="Circles falling and bouncing inside a container in the physics engine">
+        <div class="ph"><div><strong>Demo GIF coming soon</strong>Add images/physics-engine-demo.gif to show the simulation running</div></div>
+      </figure>
+
+      <div class="cols">
+        <div>
+          <h4>What works today</h4>
+          <ul>
+            <li>Circles that fall under gravity</li>
+            <li>A container the circles collide with and bounce off</li>
+            <li>Floor friction and energy loss on every bounce</li>
+            <li>A fixed 60 Hz simulation timestep</li>
+            <li>Circles spawned from the center in a rotating radial pattern</li>
+          </ul>
+        </div>
+        <div>
+          <h4>What’s next</h4>
+          <ul>
+            <li>Circle-to-circle collision detection and response</li>
+            <li>One shared shader and mesh for all circles, so it scales to many bodies</li>
+            <li>Shader compile and link error checking</li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>How it works</h4>
+      <ul class="list">
+        <li>Simulation and rendering are separate: a <code>World</code> owns a list of rigid bodies, each with a position, velocity, mass, restitution, and a polymorphic <code>Shape</code> that knows how to draw itself.</li>
+        <li>Each step applies gravity to the velocity, then moves the body by its velocity (semi-implicit Euler integration).</li>
+        <li>Wall collisions push the circle back inside the container and reflect its velocity, scaled by a restitution of 0.7 so every bounce loses energy.</li>
+        <li>Each circle is drawn as a 50-segment triangle fan, with an orthographic projection that keeps circles round when the window is resized.</li>
+        <li>OpenGL resources are released in the <code>Circle</code> destructor (RAII), so bodies clean up after themselves.</li>
+        <li>Built with CMake and Ninja, with GLFW and GLM installed through a vcpkg manifest.</li>
+      </ul>
+        </div>
+      </details>
+    </article>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><h3>Languages</h3><p>JavaScript, C++</p></div>
+      <div><h3>Backend</h3><p>Node.js, Express, REST APIs, JWT authentication</p></div>
+      <div><h3>Data</h3><p>PostgreSQL, Prisma</p></div>
+      <div><h3>Graphics &amp; systems</h3><p>OpenGL, GLFW, GLM, physics simulation</p></div>
+      <div><h3>Tools</h3><p>Git, GitHub, CMake, Ninja, vcpkg</p></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="lead" style="margin-bottom:20px">I’m open to Software Development roles. The best way to reach me is by email.</p>
+    <div class="btns">
+      <a class="btn primary" href="mailto:ethangultom83@gmail.com">ethangultom83@gmail.com</a>
+      <a class="btn" href="https://github.com/ethanGultomm" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/ethan-rio-gultom-58b99728a/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 EthanGultom. Built in HTML and CSS.</div>
+</footer>
+
+<script>
+// Demo GIF
+document.querySelectorAll('.demo[data-src]').forEach(function (fig) {
+  var img = new Image();
+  img.alt = fig.getAttribute('data-alt') || '';
+  img.onload = function () {
+    var ph = fig.querySelector('.ph');
+    if (ph) ph.replaceWith(img);
+  };
+  img.src = fig.getAttribute('data-src');
+});
+</script>
+</body>
+</html>
